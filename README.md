@@ -59,7 +59,7 @@ Form input parameters for configuring a bundle for deployment.
     - **One of**
       - Free (5K transactions per 30 days)
       - Standard (1K calls per minute)
-  - **`subdomain_name`** *(string)*: The subdomain name of the cognitive service. This is the name that will be used in the URL to access the service, and must be unique. **This cannot be changed after deployment.**.
+  - **`subdomain`** *(string)*: The subdomain name of the cognitive service. This is the name that will be used in the URL to access the service, and must be unique. **This cannot be changed after deployment.**.
 ## Examples
 
 <!-- PARAMS:END -->

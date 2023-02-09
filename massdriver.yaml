@@ -17,7 +17,7 @@ params:
       description: "To use the Language service, you **must** agree to the terms and conditions on the Azure website [here](https://portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics). More information about this can be find in the Operator Guide by clicking the **Guide** button on the bundle tile."
       required:
         - sku_name
-        - subdomain_name
+        - subdomain
       properties:
         sku_name:
           title: Service SKU
@@ -28,7 +28,7 @@ params:
               const: F0
             - title: Standard (1K calls per minute)
               const: S
-        subdomain_name:
+        subdomain:
           type: string
           title: Subdomain Name
           description: "The subdomain name of the cognitive service. This is the name that will be used in the URL to access the service, and must be unique. **This cannot be changed after deployment.**"
@@ -61,5 +61,5 @@ ui:
   service:
     ui:order:
       - sku_name
-      - subdomain_name
+      - subdomain
       - "*"
