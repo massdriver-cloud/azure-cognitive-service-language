@@ -1,0 +1,65 @@
+schema: draft-07
+name: "azure-cognitive-service-language"
+description: "Azure Cognitive Service for Language is a cloud-based service that provides Natural Language Processing (NLP) features for understanding and analyzing text. Use this service to help build intelligent applications using the web-based Language Studio, REST APIs, and client libraries."
+source_url: github.com/massdriver-cloud/azure-cognitive-service-language
+access: public
+type: infrastructure
+
+params:
+  examples: []
+  required:
+    - service
+  properties:
+    service:
+      type: object
+      title: Cognitive Service Language configuration
+      # This description is unfortunately required as there is no other way to accept the terms and conditions
+      description: "To use the Language service, you **must** agree to the terms and conditions on the Azure website [here](https://portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics). More information about this can be find in the Operator Guide by clicking the **Guide** button on the bundle tile."
+      required:
+        - sku_name
+        - subdomain
+      properties:
+        sku_name:
+          title: Service SKU
+          type: string
+          description: "The SKU of the Language service. *Note: only 1 free account is allowed per subscription.*"
+          oneOf:
+            - title: Free (5K transactions per 30 days)
+              const: F0
+            - title: Standard (1K calls per minute)
+              const: S
+        subdomain:
+          type: string
+          title: Subdomain Name
+          description: "The subdomain name of the cognitive service. This is the name that will be used in the URL to access the service, and must be unique. **This cannot be changed after deployment.**"
+          $md.immutable: true
+          pattern:  ^[a-z0-9]{1}[a-z0-9-]{0,62}[a-z0-9]{1}$
+          message:
+            pattern: The name can only include alphanumeric characters and hyphens and must be between 2 and 64 characters long. The name must start and end with an alphanumeric character.
+
+connections:
+  required:
+    - azure_service_principal
+    - azure_virtual_network
+  properties:
+    azure_service_principal:
+      $ref: massdriver/azure-service-principal
+    azure_virtual_network:
+      $ref: massdriver/azure-virtual-network
+
+artifacts:
+  required:
+    - endpoint
+  properties:
+    endpoint:
+      $ref: massdriver/azure-cognitive-service-language
+
+ui:
+  ui:order:
+    - service
+    - "*"
+  service:
+    ui:order:
+      - sku_name
+      - subdomain
+      - "*"
