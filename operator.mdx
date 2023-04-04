@@ -1,0 +1,32 @@
+# azure-cognitive-service-language
+
+Azure Cognitive Service for Language is a cloud-based service that provides Natural Language Processing (NLP) features for understanding and analyzing text. Use this service to help build intelligent applications using the web-based Language Studio, REST APIs, and client libraries.
+
+## Requires agreement checkbox
+
+To use the Language service, you **must** agree to the terms and conditions on the Azure website [here](https://portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics). You can find the checkbox in the "Review + create" step of the Azure portal. You must follow through with the creation of the service in the Azure portal to agree to the terms and conditions. Once created, you can delete the service before provisioning it in Massdriver.
+
+## Use cases
+
+### Full suite of language service features
+Unsure of which feature to use? [This table](https://learn.microsoft.com/en-us/azure/cognitive-services/language-service/overview#which-language-service-feature-should-i-use) shows a recommended feature for each common use case.
+
+### Build your model the way you want
+The Language service provides support through:
+* [SDKs](https://learn.microsoft.com/en-us/azure/cognitive-services/language-service/concepts/developer-guide?tabs=language-studio)
+* [REST APIs](https://learn.microsoft.com/en-us/rest/api/language/)
+* [Azure Language Studio GUI](https://language.cognitive.azure.com/)
+
+## Security
+
+### Enforced TLS 1.2 protocol
+All of the Cognitive Services endpoints exposed over HTTP enforce the TLS 1.2 protocol. With an enforced security protocol, consumers attempting to call a Cognitive Services endpoint should follow these guidelines:
+* The client operating system (OS) needs to support TLS 1.2.
+* The language (and platform) used to make the HTTP call need to specify TLS 1.2 as part of the request. Depending on the language and platform, specifying TLS is done either implicitly or explicitly.
+* For .NET users, consider the [Transport Layer Security best practices](https://learn.microsoft.com/en-us/dotnet/framework/network-programming/tls).
+
+### Data encryption
+Data is encrypted and decrypted using FIPS 140-2 compliant 256-bit AES encryption. Encryption and decryption are transparent, meaning encryption and access are managed for you. Your data is secure by default and you don't need to modify your code or applications to take advantage of encryption.
+
+## Trade-offs
+- VNet integration is not supported
