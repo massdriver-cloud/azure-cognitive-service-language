@@ -19,6 +19,9 @@ The Language service provides support through:
 
 ## Security
 
+### Identity-based authentication
+We configured authentication using a managed identity and RBAC instead of using the traditional API key. This is a more secure method for your application to use the Langugage service API since we aren't exposing your API key. A managed identity is automatically configured with your application's runtime, and the Language service bundle informs the application which RBAC roles are needed to access the service. Those roles are automatically applied when the connection between the Language service and your application is made in Massdriver.
+
 ### Enforced TLS 1.2 protocol
 All of the Cognitive Services endpoints exposed over HTTP enforce the TLS 1.2 protocol. With an enforced security protocol, consumers attempting to call a Cognitive Services endpoint should follow these guidelines:
 * The client operating system (OS) needs to support TLS 1.2.
