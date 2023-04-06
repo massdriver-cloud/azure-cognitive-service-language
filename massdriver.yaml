@@ -16,8 +16,14 @@ params:
       # This description is unfortunately required as there is no other way to accept the terms and conditions
       description: "To use the Language service, you **must** agree to the terms and conditions on the Azure website [here](https://portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics). More information about this can be find in the Operator Guide by clicking the **Guide** button on the bundle tile."
       required:
+        - region
         - sku_name
       properties:
+        region:
+          title: Region
+          description: The region where the Language service will be deployed.
+          $md.immutable: true
+          $ref: https://raw.githubusercontent.com/massdriver-cloud/artifact-definitions/main/definitions/types/azure-region.json
         sku_name:
           title: Service SKU
           type: string
@@ -31,12 +37,9 @@ params:
 connections:
   required:
     - azure_service_principal
-    - azure_virtual_network
   properties:
     azure_service_principal:
       $ref: massdriver/azure-service-principal
-    azure_virtual_network:
-      $ref: massdriver/azure-virtual-network
 
 artifacts:
   required:
@@ -51,5 +54,9 @@ ui:
     - "*"
   service:
     ui:order:
+      - region
       - sku_name
       - "*"
+    region:
+      ui:field: supportedCloudLocationsDropdown
+      cloudService: azure
