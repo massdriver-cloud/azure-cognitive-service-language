@@ -17,7 +17,7 @@ Azure Cognitive Service for Language is a cloud-based service that provides Natu
 
 ## Design
 
-For detailed information, check out our [Operator Guide](operator.mdx) for this bundle.
+For detailed information, check out our [Operator Guide](operator.md) for this bundle.
 
 ## Usage
 
@@ -37,15 +37,8 @@ Form input parameters for configuring a bundle for deployment.
 <summary>View</summary>
 
 <!-- PARAMS:START -->
-## Properties
 
-- **`service`** *(object)*: To use the Language service, you **must** agree to the terms and conditions on the Azure website [here](https://portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics). More information about this can be find in the Operator Guide by clicking the **Guide** button on the bundle tile.
-  - **`region`** *(string)*: The region where the Language service will be deployed.
-  - **`sku_name`** *(string)*: The SKU of the Language service. *Note: only 1 free account is allowed per subscription.*.
-    - **One of**
-      - Free (5K transactions per 30 days)
-      - Standard (1K calls per minute)
-## Examples
+**Params coming soon**
 
 <!-- PARAMS:END -->
 
@@ -59,33 +52,9 @@ Connections from other bundles that this bundle depends on.
 <summary>View</summary>
 
 <!-- CONNECTIONS:START -->
-## Properties
 
-- **`azure_service_principal`** *(object)*: . Cannot contain additional properties.
-  - **`data`** *(object)*
-    - **`client_id`** *(string)*: A valid UUID field.
+**Connections coming soon**
 
-      Examples:
-      ```json
-      "123xyz99-ab34-56cd-e7f8-456abc1q2w3e"
-      ```
-
-    - **`client_secret`** *(string)*
-    - **`subscription_id`** *(string)*: A valid UUID field.
-
-      Examples:
-      ```json
-      "123xyz99-ab34-56cd-e7f8-456abc1q2w3e"
-      ```
-
-    - **`tenant_id`** *(string)*: A valid UUID field.
-
-      Examples:
-      ```json
-      "123xyz99-ab34-56cd-e7f8-456abc1q2w3e"
-      ```
-
-  - **`specs`** *(object)*
 <!-- CONNECTIONS:END -->
 
 </details>
@@ -98,44 +67,9 @@ Resources created by this bundle that can be connected to other bundles.
 <summary>View</summary>
 
 <!-- ARTIFACTS:START -->
-## Properties
 
-- **`endpoint`** *(object)*: . Cannot contain additional properties.
-  - **`data`** *(object)*
-    - **`authentication`** *(object)*
-      - **`endpoint`** *(string)*: An HTTPS endpoint URL.
+**Artifacts coming soon**
 
-        Examples:
-        ```json
-        "https://example.com/some/path"
-        ```
-
-        ```json
-        "https://massdriver.cloud"
-        ```
-
-    - **`infrastructure`** *(object)*
-      - **`ari`** *(string)*: Azure Resource ID.
-
-        Examples:
-        ```json
-        "/subscriptions/12345678-1234-1234-abcd-1234567890ab/resourceGroups/resource-group-name/providers/Microsoft.Network/virtualNetworks/network-name"
-        ```
-
-    - **`security`** *(object)*: Azure Security Configuration. Cannot contain additional properties.
-      - **`iam`** *(object)*: IAM Roles And Scopes. Cannot contain additional properties.
-        - **`^[a-z]+[a-z_]*[a-z]$`** *(object)*
-          - **`role`**: Azure Role.
-
-            Examples:
-            ```json
-            "Storage Blob Data Reader"
-            ```
-
-          - **`scope`** *(string)*: Azure IAM Scope.
-  - **`specs`** *(object)*
-    - **`azure`** *(object)*: .
-      - **`region`** *(string)*: Select the Azure region you'd like to provision your resources in.
 <!-- ARTIFACTS:END -->
 
 </details>
