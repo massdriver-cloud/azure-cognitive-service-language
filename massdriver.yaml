@@ -1,62 +1,63 @@
 schema: draft-07
-name: "azure-cognitive-service-language"
-description: "Azure Cognitive Service for Language is a cloud-based service that provides Natural Language Processing (NLP) features for understanding and analyzing text. Use this service to help build intelligent applications using the web-based Language Studio, REST APIs, and client libraries."
-source_url: github.com/massdriver-cloud/azure-cognitive-service-language
-access: public
-type: infrastructure
-
+name: azure-cognitive-service-language
+version: 1.0.0
+description: Azure Cognitive Service for Language is a cloud-based service that provides Natural Language Processing (NLP) features for understanding and analyzing text. Use this service to help build intelligent applications using the web-based Language Studio, REST APIs, and client libraries.
+source_url: https://github.com/massdriver-cloud/azure-cognitive-service-language
+type: application
 params:
   examples: []
   required:
-    - service
+  - service
   properties:
     service:
       type: object
       title: Cognitive Service Language configuration
-      # This description is unfortunately required as there is no other way to accept the terms and conditions
-      description: "To use the Language service, you **must** agree to the terms and conditions on the Azure website [here](https://portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics). More information about this can be find in the Operator Guide by clicking the **Guide** button on the bundle tile."
+      description: To use the Language service, you **must** agree to the terms and conditions on the Azure website [here](https://portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics). More information about this can be find in the Operator Guide by clicking the **Guide** button on the bundle tile.
       required:
-        - region
-        - sku_name
+      - region
+      - sku_name
       properties:
         region:
           title: Region
           description: The region where the Language service will be deployed.
-          $md.immutable: true
-          $ref: https://raw.githubusercontent.com/massdriver-cloud/artifact-definitions/main/definitions/types/azure-region.json
+          "$md.immutable": true
+          "$ref": https://raw.githubusercontent.com/massdriver-cloud/artifact-definitions/main/definitions/types/azure-region.json
         sku_name:
           title: Service SKU
           type: string
-          description: "The SKU of the Language service. *Note: only 1 free account is allowed per subscription.*"
+          description: 'The SKU of the Language service. *Note: only 1 free account is allowed per subscription.*'
           oneOf:
-            - title: Free (5K transactions per 30 days)
-              const: F0
-            - title: Standard (1K calls per minute)
-              const: S
-
+          - title: Free (5K transactions per 30 days)
+            const: F0
+          - title: Standard (1K calls per minute)
+            const: S
 connections:
   required:
-    - azure_service_principal
+  - azure_service_principal
   properties:
     azure_service_principal:
-      $ref: massdriver/azure-service-principal
-
+      "$ref": massdriver/azure-service-principal
 artifacts:
   required:
-    - endpoint
+  - endpoint
   properties:
     endpoint:
-      $ref: massdriver/azure-cognitive-service-language
-
+      "$ref": massdriver/azure-cognitive-service-language
 ui:
   ui:order:
-    - service
-    - "*"
+  - service
+  - "*"
   service:
     ui:order:
-      - region
-      - sku_name
-      - "*"
+    - region
+    - sku_name
+    - "*"
     region:
       ui:field: supportedCloudLocationsDropdown
       cloudService: azure
+steps:
+- path: src
+  provisioner: opentofu
+  config:
+    checkov:
+      enable: true
