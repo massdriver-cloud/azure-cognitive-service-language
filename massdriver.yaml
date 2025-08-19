@@ -3,7 +3,6 @@ name: azure-cognitive-service-language
 version: 1.0.0
 description: Azure Cognitive Service for Language is a cloud-based service that provides Natural Language Processing (NLP) features for understanding and analyzing text. Use this service to help build intelligent applications using the web-based Language Studio, REST APIs, and client libraries.
 source_url: https://github.com/massdriver-cloud/azure-cognitive-service-language
-type: application
 params:
   examples: []
   required:
